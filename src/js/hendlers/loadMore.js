@@ -1,6 +1,6 @@
-import fetchImages from '../api/pixabay-api.js';
+import fetchImages from '../pixabay-api.js';
 import loadMoreBtn from '../services/ButtonService';
-import { cardsImg } from '../template/render-functions.js';
+import { cardsImg } from '../render-functions.js';
 import { photoQueryParams, refs, ACTIVE_CLASS } from '../utils/consts';
 import scrollPage from './scrollPage.js';
 

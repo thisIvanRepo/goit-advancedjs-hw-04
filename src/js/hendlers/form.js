@@ -1,7 +1,7 @@
 import { ACTIVE_CLASS, photoQueryParams, refs } from '../utils/consts.js';
 import loadMoreBtn from '../services/ButtonService.js';
-import { cardsImg } from '../template/render-functions.js';
-import fetchImages from '../api/pixabay-api.js';
+import { cardsImg } from '../render-functions.js.js';
+import fetchImages from '../pixabay-api.js';
 
 async function handleSearch(event) {
   event.preventDefault();
