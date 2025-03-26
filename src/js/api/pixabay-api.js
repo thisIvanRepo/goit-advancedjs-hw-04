@@ -7,35 +7,35 @@ axios.defaults.params = {
   image_type: 'photo',
   orientation: 'horizontal',
   safesearch: true,
-}
+};
 
-async function fetchImages(query, page=1, perPage=15) {
-  if(!query.trim()) {
+async function fetchImages(query, page = 1, perPage = 15) {
+  if (!query.trim()) {
     iziToast.error({
-      title: "Error",
-      message: "Please enter a valid search query!",
-    })
+      title: 'Error',
+      message: 'Please enter a valid search query!',
+    });
 
     return;
   }
   try {
-    const response = await axios.get('', {params: {
-      q: query,
-      page: page,
-      per_page: perPage,
-    },
-  })
+    const response = await axios.get('', {
+      params: {
+        q: query,
+        page: page,
+        per_page: perPage,
+      },
+    });
 
-  const {hits, total, totalHits} = response.data;
-  
-  return { hits, total, totalHits };
-  } catch(err) {
+    const { hits, total, totalHits } = response.data;
+
+    return { hits, total, totalHits };
+  } catch (err) {
     iziToast.error({
       title: 'Error',
-      message: `Error: ${err}`
-    })
+      message: `Error: ${err}`,
+    });
   }
-};
+}
 
 export default fetchImages;
-

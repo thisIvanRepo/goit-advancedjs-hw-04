@@ -1,8 +1,18 @@
-export const cardsImg = (data) => {
+export const cardsImg = data => {
   const images = data.hits;
 
-  return images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
-    return `
+  return images
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `
       <li class="gallery-item">
 			    <a class="gallery-link" href="${largeImageURL}">
 				    <img
@@ -27,5 +37,7 @@ export const cardsImg = (data) => {
           </div>
 		    </li>
       `;
-  }).join('');
+      }
+    )
+    .join('');
 };

@@ -1,8 +1,8 @@
-import fetchImages from "../api/pixabay-api.js";
-import loadMoreBtn from "../services/ButtonService";
-import { cardsImg } from "../template/render-functions.js";
-import { photoQueryParams, refs, ACTIVE_CLASS} from "../utils/consts";
-import scrollPage from "./scrollPage.js";
+import fetchImages from '../api/pixabay-api.js';
+import loadMoreBtn from '../services/ButtonService';
+import { cardsImg } from '../template/render-functions.js';
+import { photoQueryParams, refs, ACTIVE_CLASS } from '../utils/consts';
+import scrollPage from './scrollPage.js';
 
 async function handleLoadMore(event) {
   photoQueryParams.page += 1;
@@ -20,11 +20,11 @@ async function handleLoadMore(event) {
 
     if (photoQueryParams.page < photoQueryParams.maxPage) {
       loadMoreBtn.enable();
-    } else { 
-      loadMoreBtn.disable() 
-      refs.notFoundText.textContent = "We're sorry, but you've reached the end of search."
+    } else {
+      loadMoreBtn.disable();
+      refs.notFoundText.textContent =
+        "We're sorry, but you've reached the end of search.";
     }
-
   } catch (error) {
     console.log('Error:', error);
     loadMoreBtn.disable();

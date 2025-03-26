@@ -1,11 +1,13 @@
-import { refs } from "../utils/consts";
+import { refs } from '../utils/consts';
 
 class LoadMoreButton {
   static HIDDEN_CLASS = 'is-hidden';
 
   constructor(buttonEl) {
     if (!buttonEl) {
-      throw new Error('Button element is required to initialize LoadMoreButton.');
+      throw new Error(
+        'Button element is required to initialize LoadMoreButton.'
+      );
     }
     this.button = buttonEl;
   }

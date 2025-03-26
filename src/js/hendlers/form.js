@@ -1,11 +1,11 @@
-import { ACTIVE_CLASS, photoQueryParams, refs } from "../utils/consts.js";
-import loadMoreBtn from "../services/ButtonService.js";
-import { cardsImg } from "../template/render-functions.js";
-import fetchImages from "../api/pixabay-api.js";
+import { ACTIVE_CLASS, photoQueryParams, refs } from '../utils/consts.js';
+import loadMoreBtn from '../services/ButtonService.js';
+import { cardsImg } from '../template/render-functions.js';
+import fetchImages from '../api/pixabay-api.js';
 
 async function handleSearch(event) {
   event.preventDefault();
-  
+
   refs.notFoundText.textContent = '';
   refs.gallery.innerHTML = '';
 
@@ -29,14 +29,15 @@ async function handleSearch(event) {
     }
 
     photoQueryParams.query = userQuery;
-    photoQueryParams.maxPage = Math.ceil(images.totalHits / photoQueryParams.perPage);
+    photoQueryParams.maxPage = Math.ceil(
+      images.totalHits / photoQueryParams.perPage
+    );
 
     refs.gallery.innerHTML = cardsImg(images);
 
     if (photoQueryParams.maxPage > 1) {
       loadMoreBtn.enable();
     }
-
   } catch (error) {
     refs.loader.classList.remove(ACTIVE_CLASS);
     console.log('Error:', error);
