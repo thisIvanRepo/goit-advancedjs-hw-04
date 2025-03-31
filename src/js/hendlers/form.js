@@ -2,6 +2,7 @@ import { ACTIVE_CLASS, photoQueryParams, refs } from '../utils/consts.js';
 import loadMoreBtn from '../services/ButtonService.js';
 import { cardsImg } from '../render-functions.js';
 import fetchImages from '../pixabay-api.js';
+import iziToast from 'izitoast';
 
 async function handleSearch(event) {
   event.preventDefault();
@@ -15,6 +16,15 @@ async function handleSearch(event) {
 
   const form = event.currentTarget;
   const userQuery = form.elements.user_query.value.trim();
+  
+  if (!userQuery) {
+    iziToast.error({
+      title: 'Error',
+      message: 'Please enter a valid search query!',
+    });
+
+    return;
+  }
 
   refs.loader.classList.add(ACTIVE_CLASS);
 
@@ -40,7 +50,10 @@ async function handleSearch(event) {
     }
   } catch (error) {
     refs.loader.classList.remove(ACTIVE_CLASS);
-    console.log('Error:', error);
+    iziToast.error({
+      title: 'Error',
+      message: `Error: ${error}`,
+    });
   } finally {
     form.reset();
   }

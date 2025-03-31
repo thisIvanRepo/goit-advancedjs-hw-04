@@ -1,5 +1,4 @@
 import axios from 'axios';
-import iziToast from 'izitoast';
 
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 axios.defaults.params = {
@@ -10,14 +9,6 @@ axios.defaults.params = {
 };
 
 async function fetchImages(query, page = 1, perPage = 15) {
-  if (!query.trim()) {
-    iziToast.error({
-      title: 'Error',
-      message: 'Please enter a valid search query!',
-    });
-
-    return;
-  }
   try {
     const response = await axios.get('', {
       params: {
@@ -31,10 +22,7 @@ async function fetchImages(query, page = 1, perPage = 15) {
 
     return { hits, total, totalHits };
   } catch (err) {
-    iziToast.error({
-      title: 'Error',
-      message: `Error: ${err}`,
-    });
+      throw new Error("Something went wrong while fetching images...");
   }
 }
 
