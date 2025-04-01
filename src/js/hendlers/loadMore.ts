@@ -1,4 +1,4 @@
-import fetchImages from '../pixabay-api.js';
+import fetchImages from '../pixabay-api';
 import loadMoreBtn from '../services/ButtonService';
 import { cardsImg } from '../render-functions.js';
 import { photoQueryParams, refs, ACTIVE_CLASS } from '../utils/consts';

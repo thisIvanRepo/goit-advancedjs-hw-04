@@ -8,7 +8,27 @@ axios.defaults.params = {
   safesearch: true,
 };
 
-async function fetchImages(query, page = 1, perPage = 15) {
+type Image = {
+  webformatURL: string,
+  largeImageURL: string,
+  tags: string,
+  likes: number,
+  views: number,
+  comments: number,
+  downloads: number,
+}
+
+type ResponseData = { 
+  hits:Image[];
+  total:number;
+  totalHits:number;
+ }
+
+async function fetchImages(
+  query:string,
+  page:number = 1,
+  perPage:number = 15):Promise<ResponseData>
+   {
   try {
     const response = await axios.get('', {
       params: {
@@ -19,6 +39,7 @@ async function fetchImages(query, page = 1, perPage = 15) {
     });
 
     const { hits, total, totalHits } = response.data;
+    console.log(response);
 
     return { hits, total, totalHits };
   } catch (err) {
